@@ -1,8 +1,15 @@
 // app/stock/[symbol]/page.tsx
-"use client"; // Client-side rendering for dynamic routes
+"use client";
+import { useEffect } from "react";
+
+// Client-side rendering for dynamic routes
 
 const StockDetails = ({ params }: any) => {
   const symbol = params.symbol; // Get the stock symbol from the route
+
+  useEffect(() => {
+    // Fetch stock details
+  }, [symbol]);
 
   return (
     <div>
