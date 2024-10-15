@@ -5,12 +5,14 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #4a5568; /* You can change this to any color you'd like */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --primary: #2d3748; /* Optional different primary color for dark mode */
   }
 }
 

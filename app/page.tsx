@@ -4,8 +4,14 @@ import { observer } from "mobx-react-lite";
 import { Table } from "antd"; // Import Table from Ant Design
 import portfolioStore from "@/stores/portfolioStore";
 import LookupInput from "@/components/LookupInput";
+import { useEffect } from "react";
+import Link from "next/link"; // Import Link from Next.js
 
 const Portfolio = observer(() => {
+  useEffect(() => {
+    portfolioStore.fetchUserPortfolio(); // Fetch user's portfolio
+  }, []);
+
   // Define the columns for Ant Design's Table component
   const columns = [
     {
@@ -17,6 +23,11 @@ const Portfolio = observer(() => {
       title: "Symbol",
       dataIndex: "symbol",
       key: "symbol",
+      render: (symbol: string) => (
+        <Link href={`/stock/${symbol}`} passHref>
+          <span className='text-blue-600 hover:text-blue-800'>{symbol}</span>
+        </Link>
+      ), // Link to the stock details page
     },
     {
       title: "Latest Price",
@@ -51,7 +62,7 @@ const Portfolio = observer(() => {
         </h1>
         {/* Ant Design Table Component */}
         <Table
-          dataSource={portfolioStore.stocks} // Pass the stocks as dataSource
+          dataSource={portfolioStore.userStocks} // Pass the stocks as dataSource
           columns={columns} // Columns for the table
           rowKey='symbol' // Use stock symbol as the unique key for each row
           pagination={false} // Disable pagination for simplicity

@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { use, useState } from "react";
 import { AutoComplete, Input, message } from "antd";
 import axios from "axios";
 import type { AutoCompleteProps } from "antd";
 import { useRouter } from "next/navigation";
 
-const apiKey = "GbG56jeXbPtEB50wsjrbvke3rfxKkgxL"; //process.env.financialmodelingprep_key; // Replace with your actual API key
+const apiKey = process.env.NEXT_PUBLIC_FINANCIAL_MODELING_PREP_API_KEY; //process.env.financialmodelingprep_key; // Replace with your actual API key
 
 const LookupInput: React.FC = () => {
   const [options, setOptions] = useState<AutoCompleteProps["options"]>([]);
@@ -15,6 +15,7 @@ const LookupInput: React.FC = () => {
   const fetchStockData = async (query: string) => {
     try {
       setLoading(true);
+
       const response = await axios.get(
         `https://financialmodelingprep.com/api/v3/search?query=${query}&limit=10&exchange=NASDAQ&apikey=${apiKey}`
       );
@@ -31,6 +32,7 @@ const LookupInput: React.FC = () => {
           </div>
         ),
       }));
+
       setOptions(results);
     } catch (error) {
       message.error("Failed to fetch stock data");

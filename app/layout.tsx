@@ -42,6 +42,9 @@ export default function RootLayout({
                 {isSidebarOpen ? <CloseOutlined /> : <MenuOutlined />}
               </button>
 
+              {/* Spacer */}
+              <div className='flex-grow'></div>
+
               {/* Right-side icons */}
               <div className='flex items-center space-x-4'>
                 {/* Settings icon */}

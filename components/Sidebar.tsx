@@ -13,6 +13,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
   return (
     <>
       {/* Sidebar */}
+
       <div
         className={`fixed top-0 left-0 h-screen w-64 bg-gray-800 text-white p-4 z-10 transform transition-transform duration-300 ease-in-out 
         ${
@@ -38,13 +39,13 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
           >
             Portfolio
           </Link>
-          <Link
+          {/* <Link
             href='/stock/AAPL'
             className='text-white hover:bg-gray-700 p-2 rounded'
             onClick={toggleSidebar}
           >
             Stock Details
-          </Link>
+          </Link> */}
         </nav>
       </div>
 
