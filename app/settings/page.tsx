@@ -64,6 +64,7 @@ const Settings = () => {
                     </label>
                   ) : (
                     <input
+                      disabled={true}
                       type='text'
                       className='px-4 py-2 border rounded-lg text-primary focus:outline-none focus:border-blue-500'
                       value={setting.value as string}
